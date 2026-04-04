@@ -1,0 +1,19 @@
+# Generated site files
+_site/
+
+# Jekyll and Sass cache
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby environment
+/vendor/
+.bundle/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.Rhistory

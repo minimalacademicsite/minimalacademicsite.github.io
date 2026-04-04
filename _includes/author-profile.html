@@ -1,0 +1,219 @@
+{% include base_path %}
+
+{% if page.author and site.data.authors[page.author] %}
+  {% assign author = site.data.authors[page.author] %}
+{% else %}
+  {% assign author = site.author %}
+{% endif %}
+
+<style>
+  /* Global Main Content Fixes */
+  #main p, .page__content p, .archive p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    line-height: 1.7 !important; 
+  }
+
+  #main, .page, .page__inner-wrap, .page__content {
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Sidebar Specific Styling */
+  .sidebar-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #3b3b3b;
+  }
+  
+  .sidebar-section-title {
+    font-size: 0.90em; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.08em;
+    color: #2c3e50; 
+    margin-bottom: 15px; 
+    border-bottom: 1px solid #eaeaea; 
+    padding-bottom: 4px;
+    text-align: left;
+  }
+
+  /* Smooth Hover Effects */
+  .hover-lift { transition: transform 0.3s ease !important; }
+  .hover-lift:hover { transform: translateY(-4px) !important; cursor: pointer; }
+  
+  /* Grayscale-to-Color for Affiliation Logos */
+  .affil-logo { 
+    display: block; 
+    margin: 0 auto; 
+    filter: grayscale(100%) opacity(70%); 
+    transition: all 0.3s ease; 
+    object-fit: contain; 
+  }
+  .affil-logo:hover { filter: grayscale(0%) opacity(100%); }
+
+  /* FontAwesome Icon Styling */
+  .fa-icon {
+    font-size: 1.3em; 
+    color: #8fa0b3; 
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  .fa-icon:hover { transform: translateY(-3px); }
+  .email-icon:hover { color: #d93025; }      
+  .scholar-icon:hover { color: #4285f4; }    
+  .github-icon:hover { color: #333333; }     
+  .linkedin-icon:hover { color: #0077b5; }
+  .orcid-icon:hover { color: #a6ce39; }
+  
+  /* CV Button Styling */
+  .cv-button {
+    display: inline-block; 
+    padding: 8px 20px; 
+    border: 1px solid #2c3e50; 
+    border-radius: 4px; 
+    color: #2c3e50; 
+    background-color: transparent;
+    font-size: 0.85em; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    text-decoration: none; 
+    transition: all 0.3s ease;
+  }
+  
+  .cv-button:hover {
+    background-color: #2c3e50;
+    color: #ffffff !important;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(44, 62, 80, 0.15);
+  }
+
+  /* Mobile Experience */
+  @media (max-width: 1024px) {
+    .sidebar-wrap {
+      padding-bottom: 25px !important;
+      margin-bottom: 25px !important;
+      border-bottom: 1px solid #eaeaea; 
+    }
+    .author__avatar img {
+      width: 170px !important;     
+      height: 170px !important;     
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+      border-radius: 70% !important;
+    }
+    .affil-grid { gap: 15px !important; }
+    .affil-logo { max-width: 100px !important; height: auto !important; }
+  }
+
+  /* Laptop Sidebar Spacing Fix */
+  @media (min-width: 1025px) {
+    .sidebar-wrap {
+      padding-left: 80px !important; 
+      margin-right: -60px !important;
+    }
+  }
+
+  .sidebar-wrap .author__avatar,
+  .sidebar-wrap .author__content {
+    width: 100%;
+    display: block;
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sidebar-wrap .author__avatar img {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<div class="sidebar-wrap" itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar" style="text-align: center; margin-bottom: 15px;">
+  <img src="{{ base_path }}/images/{{ author.avatar | default: 'profile.png' }}" class="author__avatar hover-lift" alt="{{ author.name | default: 'John Doe' }}" fetchpriority="high" width="240" height="240" style="border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.06); width: 100%; max-width: 240px; height: auto; aspect-ratio: 1/1; object-fit: cover; object-position: top;">
+  </div>
+
+  <div class="author__content" style="text-align: center; margin-bottom: 25px;">
+    <h3 style="margin: 0; color: #2c3e50; font-size: 1.1em; font-weight: 700; text-transform: uppercase;">{{ author.name | default: "John Doe" }}</h3>
+    <h4 style="font-size: 0.7em; color: #666; margin-top: 5px; margin-bottom: 0; font-weight: 500;">{{ author.description | default: "Open Source Enthusiast" }}</h4>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+    <div style="display: flex; justify-content: center; gap: 20px;">
+      
+      {% if author.email %}
+      <a href="mailto:{{ author.email }}" title="Email">
+        <i class="fas fa-envelope fa-icon email-icon"></i>
+      </a>
+      {% endif %}
+
+      {% if author.googlescholar %}
+      <a href="https://scholar.google.com/citations?user={{ author.googlescholar }}" target="_blank" title="Google Scholar">
+        <i class="fas fa-graduation-cap fa-icon scholar-icon"></i>
+      </a>
+      {% endif %}
+
+      {% if author.github %}
+      <a href="https://github.com/{{ author.github }}" target="_blank" title="GitHub">
+        <i class="fab fa-github fa-icon github-icon"></i>
+      </a>
+      {% endif %}
+
+      {% if author.linkedin %}
+      <a href="https://www.linkedin.com/in/{{ author.linkedin }}" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin fa-icon linkedin-icon"></i>
+      </a>
+      {% endif %}
+
+      {% if author.orcid %}
+      <a href="https://orcid.org/{{ author.orcid }}" target="_blank" title="ORCID">
+        <i class="fab fa-orcid fa-icon orcid-icon"></i>
+      </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <div style="margin-bottom: 35px; padding: 0 5px;">
+    <div class="sidebar-section-title">Affiliations</div>
+    
+    <div class="affil-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 15px; align-items: center; justify-items: center;">
+      <img src="{{ base_path }}/images/university-placeholder.png" class="affil-logo hover-lift" alt="University of Earth Sciences" width="80" height="60" style="width: 80px; height: auto;">
+      <img src="{{ base_path }}/images/lab-placeholder.png" class="affil-logo hover-lift" alt="Climate Analytics Lab" width="80" height="60" style="width: 75px; height: auto;">
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; text-align: center; border-top: 1px solid #eaeaea; padding-top: 20px;">
+    <a href="{{ base_path }}/files/John_Doe_CV.pdf" target="_blank" class="cv-button">
+      <i class="fas fa-file-pdf" style="margin-right: 6px;"></i> Download CV
+    </a>
+  </div>
+
+  <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaeaea; text-align: center;">
+    <span style="font-size: 0.65em; color: #8fa0b3; text-transform: uppercase; letter-spacing: 0.05em;">
+      Graphic Resources: <a href="https://www.flaticon.com/" target="_blank" style="color: #8fa0b3;">Flaticon</a>
+    </span>
+  </div>
+
+</div>
+
+
+{% comment %}
+
+  <div style="margin-top: 30px; border-top: 1px solid #eaeaea; padding-top: 20px; text-align: center;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: #fcfcfc; padding: 6px 12px; border-radius: 4px; border: 1px solid #eaeaea; font-size: 0.8em; color: #555;">
+      <span style="height: 8px; width: 8px; background-color: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);"></span>
+      Open to Collaborations
+    </div>
+  </div>
+  
+
+  <div style="margin-top: 20px; text-align: center;">
+    <p style="font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.05em; color: #8fa0b3; margin-bottom: 3px; font-weight: 700;">Academic Impact</p>
+    <p style="font-size: 0.85em; color: #555; margin: 0;">
+      Citations: <strong>120+</strong> &nbsp;&bull;&nbsp; h-index: <strong>5</strong>
+    </p>
+  </div>
+
+{% endcomment %}

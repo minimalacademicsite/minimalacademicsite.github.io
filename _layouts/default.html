@@ -1,0 +1,84 @@
+---
+layout: compress
+---
+{% include base_path %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+
+<head>
+  {% include head.html %}
+  {% include head/custom.html %}
+  
+  <style>
+    /* ডেস্কটপ লেআউট (Desktop View) */
+    .main-container {
+      display: flex;
+      flex-direction: row; /* পাশাপাশি থাকবে */
+      flex: 1;
+      max-width: 1550px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      align-items: stretch;
+    }
+
+  
+    
+    .left-sidebar {
+      width: 380px; /* ডেস্কটপে ফিক্সড প্রস্থ */
+      flex-shrink: 0;
+      padding: 0px 10px;
+      /*border-right: 1px solid #eeeeee; /* ডান দিকের ভার্টিক্যাল লাইন */
+      box-sizing: border-box;
+      background-color: #ffffff;
+    }
+
+    .right-content {
+      flex: 1;
+      padding: 0px 0px;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    /* 📱 মোবাইল এবং ট্যাবলেট লেআউট (Mobile & Tablet View) */
+    @media (max-width: 1024px) {
+      .main-container {
+        flex-direction: column; /* সাইডবার এবং কন্টেন্ট উপর-নিচ হয়ে যাবে */
+      }
+      
+      .left-sidebar {
+        width: 100%; /* মোবাইলে সাইডবার পুরো স্ক্রিন জুড়ে থাকবে */
+        border-right: none; /* ভার্টিক্যাল লাইনটি মুছে যাবে */
+        border-bottom: 2px solid #eeeeee; /* সাইডবারের নিচে একটি লাইন আসবে */
+        padding: 20px 15px; /* মোবাইলের জন্য প্যাডিং কমানো হয়েছে */
+        text-align: center; /* মোবাইলে সব আইকন ও ছবি মাঝখানে সুন্দর দেখাবে */
+      }
+
+      .right-content {
+        padding: 20px 15px; /* কন্টেন্টের প্যাডিং কমানো হয়েছে */
+      }
+    }
+  </style>
+</head>
+
+<body style="margin:0; display:flex; flex-direction:column; min-height:100vh; background-color:#ffffff;">
+
+  {% include masthead.html %}
+
+  <div id="main" role="main" class="main-container">
+
+    <aside class="sidebar left-sidebar">
+      {% include author-profile.html %}
+    </aside>
+
+    <article class="page right-content">
+      {{ content }}
+    </article>
+
+  </div>
+
+  {% include footer.html %}
+  {% include scripts.html %}
+
+</body>
+</html>

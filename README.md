@@ -4,7 +4,7 @@
 
 
 
-  A customized, ultra-minimalist portfolio template (**[website](https://minimalacademicsite.github.io/)**) designed for researchers, data scientists, and academics.  
+  A customized, ultra-minimalist portfolio template (**[website](https://minimalacademicsite.github.io/)**) designed for researchers, scientists, and academics.  
 
   <img src="demo.gif" alt="Minimalist Academic Portfolio Demo" width="800">
   

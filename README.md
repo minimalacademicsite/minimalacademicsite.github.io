@@ -1,13 +1,18 @@
+<div align="center">
+
 # Minimalist Academic Portfolio Template   [![License: MIT](https://img.shields.io/badge/License-MIT-3172B4.svg?style=flat-square)](https://opensource.org/licenses/MIT) [![Static Badge](https://img.shields.io/badge/Built_with-Jekyll-D00000?style=flat-square&logo=jekyll)]()
-<p align="right">
-  <sub><i>Find this useful! A ⭐ is greatly appreciated.</i></sub>
-</p>
 
-A customized, ultra-minimalist portfolio template designed for Ph.D. researchers, data scientists, and academics. **[Live Demo](https://minimalacademicsite.github.io/)** 
 
-A customized, ultra-minimalist portfolio template designed for Ph.D. researchers, data scientists, and academics. **[Live Demo](https://minimalacademicsite.github.io/)** <div align="center">
+
+  A customized, ultra-minimalist portfolio template (**[website](https://minimalacademicsite.github.io/)**) designed for researchers, data scientists, and academics.  
+
   <img src="demo.gif" alt="Minimalist Academic Portfolio Demo" width="800">
+  
+  
+
+  <sub><i>Find this useful! A ⭐ is greatly appreciated.</i></sub>
 </div>
+
 
 
 

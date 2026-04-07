@@ -1,0 +1,33 @@
+name: Generate Demo File
+
+on: 
+  push:
+    branches:
+      - main # Restricts the action to run only on pushes to the main branch
+
+permissions:
+  contents: write # Grants the required permission to push the commit
+
+jobs:
+  generate-gif:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Capture website as GIF
+        uses: PabloLec/website-to-gif@2.1.5
+        with:
+          url: "https://minimalacademicsite.github.io/"
+          final_width: 1024
+          final_height: 576
+          time_per_frame: 150
+          scroll_step: 50
+          
+      - name: Commit and push file to repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-generate website demo GIF" || echo "No changes to commit"
+          git push

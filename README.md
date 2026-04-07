@@ -5,6 +5,10 @@
 
 A customized, ultra-minimalist portfolio template designed for Ph.D. researchers, data scientists, and academics. **[Live Demo](https://minimalacademicsite.github.io/)** 
 
+A customized, ultra-minimalist portfolio template designed for Ph.D. researchers, data scientists, and academics. **[Live Demo](https://minimalacademicsite.github.io/)** <div align="center">
+  <img src="demo.gif" alt="Minimalist Academic Portfolio Demo" width="800">
+</div>
+
 
 
 ## What makes this fork different?
